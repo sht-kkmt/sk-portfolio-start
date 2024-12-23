@@ -1,0 +1,676 @@
+@charset "UTF=8";
+
+$breakpoints: (
+  sp: "screen and (max-width: 767px)",
+  pc: "screen and (min-width: 768px)",
+);
+
+@mixin mq($breakpoint: pc) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+.hidden-sp {
+  @include mq("sp") {
+    display: none;
+  }
+}
+
+.hidden-pc {
+  @include mq("pc") {
+    display: none;
+  }
+}
+
+/* 全体 */
+body {
+  font-family: Roboto, "Noto sans JP", "Helvetica Neue", Arial,
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 15px;
+  color: #333;
+  @include mq("sp") {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+a:hover {
+  color: #dd1b57;
+}
+
+/* レイアウト */
+.container {
+  max-width: 1170px;
+  padding: 0 30px;
+  margin: 0 auto;
+  @include mq("sp") {
+    padding: 0 20px;
+    overflow: hidden;
+  }
+}
+
+/* ヘッダー */
+header {
+  display: flex; /* 横並びにする */
+  justify-content: space-between; /* ロゴとナビゲーションを左右に配置 */
+  align-items: center; /* 縦方向で中央揃え */
+  padding: 30px 70px; /* 既存の余白を維持 */
+  position: relative;
+  z-index: 5;
+  @include mq("sp") {
+    padding: 20px;
+    height: 60px;
+  }
+}
+
+.header__logo {
+  @include mq("sp") {
+    width: 107px;
+  }
+}
+
+.g-nav {
+  @include mq("sp") {
+    display: none;
+  }
+}
+
+.btn-menu {
+  @include mq("sp") {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 10;
+    background-color: #dd1b57;
+    width: 60px;
+    height: 60px;
+    top: 0;
+    right: 0;
+
+    .line {
+      display: block;
+      background-color: #fff;
+      position: absolute;
+      z-index: 20;
+      height: 2px;
+      width: 30px;
+      border-radius: 2px;
+      margin-bottom: 6px;
+      transition: transform 0.3s linear;
+    }
+
+    .line__top {
+      transform: translateY(-8px);
+    }
+
+    .line__bottom {
+      transform: translateY(8px);
+    }
+
+    .btn-menu .line {
+      margin-bottom: 6px;
+    }
+
+    &.is-checked {
+      .line__middle {
+        display: none;
+      }
+      .line__top {
+        transform: translateX(0%) translateY(-50%) rotate(45deg);
+      }
+      .line__bottom {
+        transform: translateX(0%) translateY(-50%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+.g-nav__list {
+  display: flex;
+  justify-content: right;
+  gap: 30px;
+}
+
+.g-nav__item > a {
+  color: #151515;
+  font-size: 16px;
+  font-weight: bold;
+  font-weight: 700;
+  line-height: 16px; /* 100% */
+  letter-spacing: 0.8px;
+}
+
+.g-nav__item--active > a {
+  color: #dd1b57;
+}
+
+.g-nav__item > a:hover {
+  color: #dd1b57;
+}
+
+.js-contentArea {
+  display: none;
+  @include mq("sp") {
+    display: block;
+    width: 180px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    background-color: #dd1b57;
+    z-index: 8;
+    transition: transform 0.2s linear;
+    padding-top: 90px;
+    padding-left: 50px;
+    a {
+      color: #fff;
+    }
+  }
+  &.is-checked {
+    transform: translateX(0);
+    transition: transform 0.2s linear;
+  }
+}
+
+.js-g-nav__item {
+  padding-bottom: 20px;
+}
+
+.js-g-nav__item a {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px; /* 100% */
+  letter-spacing: 0.8px;
+}
+
+.js-g-nav__list {
+  display: block;
+}
+
+/* mv */
+.mv {
+  background-image: url(../images/pc_bg_mv.jpg);
+  width: 100%;
+  height: 600px;
+  background-size: cover; /* コンテナ全体を埋める */
+  background-position: center; /* 中央を基準に表示 */
+  background-repeat: no-repeat; /* 繰り返しを防止 */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include mq("sp") {
+    background-image: url(../images/sp_mv.jpg);
+    height: 460px;
+  }
+}
+
+.mv__title-area {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.mv__title {
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+  font-family: Roboto;
+  font-size: 160px;
+  font-weight: 700;
+  line-height: 160px; /* 100% */
+  @include mq("sp") {
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 80px; /* 100% */
+  }
+}
+
+.mv__subtitle {
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.41);
+  font-family: "Noto sans JP";
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px; /* 100% */
+  letter-spacing: 2.4px;
+  padding-top: 10px;
+  @include mq("sp") {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px; /* 100% */
+    letter-spacing: 2px;
+  }
+}
+
+/* news */
+.news {
+  padding-top: 60px;
+  @include mq("sp") {
+    padding-top: 40px;
+  }
+}
+
+.news__heading {
+  flex-shrink: 0;
+}
+
+.heading-primary {
+  color: #dd1b57;
+  font-family: "Noto sans JP";
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 40px; /* 100% */
+  letter-spacing: 2px;
+  padding-right: 91px;
+  @include mq("sp") {
+    font-size: 32px;
+    line-height: 32px; /* 100% */
+    letter-spacing: 1.6px;
+    padding-bottom: 20px;
+  }
+}
+
+.news__inner {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 90px;
+  @include mq("sp") {
+    display: block;
+    margin-bottom: 52px;
+  }
+}
+
+.news__item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.news__link {
+  display: flex;
+  @include mq("sp") {
+    display: block;
+  }
+}
+
+.news__item:first-child {
+  padding-top: 0;
+}
+
+.news__date {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 27px; /* 180% */
+  @include mq("sp") {
+    padding-top: 0px;
+  }
+}
+
+.news__date:first-child {
+  @include mq("sp") {
+    padding-top: none;
+  }
+}
+
+.news__title {
+  padding-left: 15px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 27px; /* 180% */
+  @include mq("sp") {
+    padding-left: 0;
+  }
+}
+
+/* service */
+.service__heading {
+  position: relative;
+}
+
+.service__heading::before {
+  display: block;
+  content: "SERVICE";
+  position: absolute;
+  top: -40px;
+  right: -20px;
+  z-index: -1;
+  font-size: 168px;
+  font-weight: bold;
+  line-height: 1;
+  color: #f2f2f2;
+  @include mq("sp") {
+    top: -2px;
+    right: -30px;
+    font-size: 70px;
+  }
+}
+
+.service__body {
+  @include mq("sp") {
+    padding: 0;
+  }
+}
+
+.service__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px 0 100px;
+  @include mq("sp") {
+    display: block;
+    padding: 0;
+  }
+}
+
+.service__item {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.16);
+  text-align: center;
+  padding: 50px;
+  @include mq("sp") {
+    margin-bottom: 20px;
+    padding: 40px 30px;
+  }
+}
+
+.service__item:last-child {
+  @include mq("sp") {
+    margin-bottom: 60px;
+  }
+}
+
+.service__icon > .material-icons-round {
+  font-size: 48px;
+  color: #dd1b57;
+  @include mq("sp") {
+    font-size: 60px;
+  }
+}
+
+.service__title {
+  color: #000;
+  font-family: "Noto sans JP";
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20.7px; /* 115% */
+  padding-top: 10px;
+  padding-bottom: 15px;
+  @include mq("sp") {
+    font-size: 16px;
+    line-height: 18.4px; /* 115% */
+    padding-top: 0px;
+    padding-bottom: 10px;
+  }
+}
+
+.service__text {
+  color: #333;
+  font-family: "Noto sans JP";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 23.8px; /* 170% */
+  text-align: left;
+}
+
+/* footer */
+.footer {
+  background-color: #dd1b57;
+  color: #fff;
+  font-family: "Noto Sans JP";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 14px; /* 100% */
+  letter-spacing: 0.7px;
+  @include mq("sp") {
+    font-size: 12px;
+    line-height: 12px; /* 100% */
+    letter-spacing: 0.6px;
+  }
+}
+
+.footer > .container {
+  padding-bottom: 50px;
+  margin-left: 20px;
+  @include mq("sp") {
+    padding-bottom: 32px;
+    margin-left: 0;
+  }
+}
+
+.footer__list {
+  display: flex;
+  gap: 30px;
+  padding: 60px 0 20px 0;
+  @include mq("sp") {
+    display: flex;
+    gap: 25px;
+    padding: 42px 0 23px 0;
+  }
+}
+
+.footer__item a {
+  color: #fff;
+  font-family: "Noto Sans JP";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 14px; /* 100% */
+  letter-spacing: 0.7px;
+  @include mq("sp") {
+    font-size: 12px;
+  }
+}
+
+.footer__item a:hover {
+  color: #fff;
+}
+
+.footer__copyright {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 13.8px; /* 115% */
+  letter-spacing: 0.36px;
+  @include mq("sp") {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 10px; /* 100% */
+    letter-spacing: 0.03em;
+  }
+}
+
+// メッセージページ
+.subpage__title {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0px 3px 3px rgba(195, 45, 77, 0.2);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px; /* 100% */
+  letter-spacing: 4px;
+  @include mq("sp") {
+    font-size: 28px;
+    line-height: 28px; /* 100% */
+    letter-spacing: 2.8px;
+  }
+}
+
+.subv {
+  background-image: url(../images/pc_bg_mv.jpg);
+  width: 100%;
+  height: 190px;
+  background-size: cover; /* コンテナ全体を埋める */
+  background-position: center; /* 中央を基準に表示 */
+  background-repeat: no-repeat; /* 繰り返しを防止 */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include mq("sp") {
+    background-image: url(../images/sp_header.jpg);
+    height: 160px;
+  }
+}
+
+.message__title {
+  color: #dd1b57;
+  text-align: center;
+  padding-top: 60px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px; /* 150% */
+  letter-spacing: 2px;
+  @include mq("sp") {
+    font-size: 24px;
+    line-height: 36px; /* 150% */
+    letter-spacing: 1.2px;
+    padding-top: 40px;
+  }
+}
+
+.message__subtitle {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28.8px; /* 160% */
+  letter-spacing: 0.9px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  @include mq("sp") {
+    font-size: 15px;
+    line-height: 24px; /* 160% */
+    letter-spacing: 0.75px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+  }
+}
+
+.ceo-message {
+  max-width: 790px;
+  margin: 0 auto;
+}
+
+.ceo-message__img {
+  float: left; /* 画像を左に寄せる */
+  width: 100px; /* 画像の幅を指定 */
+  height: auto; /* 画像の比率を維持 */
+  margin-right: 25px; /* 画像とテキストの間に余白を追加 */
+  margin-bottom: 28px; /* 潜り込む部分を調整するための下部余白 */
+  border-radius: 50%; /* 画像を丸くする */
+  @include mq("sp") {
+    margin-top: 3px;
+    margin-right: 15px;
+    margin-bottom: 17px;
+  }
+}
+
+.ceo-massage__text {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25.6px; /* 160% */
+  letter-spacing: 0.8px;
+  @include mq("sp") {
+    font-size: 15px;
+    line-height: 24px; /* 160% */
+    letter-spacing: 0.75px;
+  }
+}
+
+.ceo-massage__text > a {
+  color: #349bf4;
+  text-decoration: underline;
+}
+
+.img__meettingroom {
+  margin: 0 auto;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  @include mq("sp") {
+    padding-top: 50px;
+    padding-bottom: 60px;
+    object-fit: cover;
+  }
+}
+
+// 会社概要ページ
+
+.company__info {
+  width: 100%;
+  margin: 50px auto 50px;
+  text-align: left;
+  border-collapse: collapse;
+  @include mq("sp") {
+    margin: 30px auto 50px;
+  }
+}
+
+.company-info__map iframe {
+  height: 400px;
+  @include mq("sp") {
+    height: 300px;
+  }
+}
+
+.company__info tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.company__info th {
+  width: 100px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17.25px; /* 115% */
+  letter-spacing: 0.75px;
+  border-bottom: 1px solid #ddd;
+  @include mq("sp") {
+    font-size: 14px;
+    line-height: 21px; /* 150% */
+  }
+}
+
+.company__info td {
+  text-align: left;
+  padding: 30px 0 30px 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 17.25px; /* 115% */
+  letter-spacing: 0.75px;
+  border-bottom: 1px solid #ddd;
+  @include mq("sp") {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px; /* 150% */
+    padding: 20px 0 20px 0;
+  }
+}
+
+.company-info__maplink {
+  text-align: right;
+  color: #349bf4;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.1px; /* 115% */
+  text-decoration-line: underline;
+  padding-top: 20px;
+  padding-bottom: 80px;
+}
+
+.company__news {
+  padding-bottom: 100px;
+  @include mq("sp") {
+    padding-bottom: 50px;
+  }
+}

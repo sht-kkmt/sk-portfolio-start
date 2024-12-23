@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="icon-192x192.png" />
+    <title>会社概要‐START</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="header__logo">
+        <a href="index.html"><img src="images/logo.svg" alt="START" /></a>
+      </div>
+      <div class="header__nav">
+        <nav class="g-nav">
+          <ul class="g-nav__list">
+            <li id="js-g-nav" class="g-nav__item">
+              <a href="index.html">ホーム</a>
+            </li>
+            <li class="g-nav__item">
+              <a href="message.html">メッセージ</a>
+            </li>
+            <li class="g-nav__item g-nav__item--active">
+              <a href="company.html">会社概要</a>
+            </li>
+          </ul>
+        </nav>
+        <button type="button" id="js-btn-menu" class="btn-menu">
+          <span class="line line__top line--open"></span
+          ><span class="line line__middle line--open"></span
+          ><span class="line line__bottom line--open"></span>
+        </button>
+        <div id="js-contentArea" class="js-contentArea">
+          <ul class="js-g-nav__list">
+            <li id="js-g-nav" class="js-g-nav__item g-nav__item--active">
+              <a href="index.html">ホーム</a>
+            </li>
+            <li id="js-g-nav" class="js-g-nav__item">
+              <a href="message.html">メッセージ</a>
+            </li>
+            <li id="js-g-nav" class="js-g-nav__item">
+              <a href="company.html">会社概要</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- /header -->
+    <!-- subv -->
+    <div class="subv">
+      <div class="suv__title-area">
+        <h2 class="subpage__title">会社概要</h2>
+      </div>
+    </div>
+    <!-- /subv -->
+    <!-- content -->
+    <section class="company">
+      <div class="container">
+        <table class="company__info">
+          <tr>
+            <th>社名</th>
+            <td>株式会社START</td>
+          </tr>
+          <tr>
+            <th>設立</th>
+            <td><time datetime="2010-0101">2025.02.10</time></td>
+          </tr>
+          <tr>
+            <th>代表取締役</th>
+            <td>ショーン・デイビット・ジュニア</td>
+          </tr>
+          <tr>
+            <th>資本金</th>
+            <td>10,000,000円</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>〒555-5555 東京都千代田区 スタートビルディング 606</td>
+          </tr>
+        </table>
+
+        <div class="company-info__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.8330566914933!2d139.76451597525056!3d35.68111242998139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1732579769629!5m2!1sja!2sjp"
+            width="100%"
+            height="auto"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <div class="company-info__maplink">
+            <a href="">Google mapで見る</a>
+          </div>
+        </div>
+        <div class="company__news">
+          <div class="news__body">
+            <ul class="news__list">
+              <li class="news__item news">
+                <a class="news__link" href="#">
+                  <div class="news__date">
+                    <time datetime="2020-01-01">2030.02.10</time>
+                  </div>
+                  <div class="news__title">
+                    コーポレートサイトをリニューアルしました。
+                  </div>
+                </a>
+              </li>
+              <li class="news__item">
+                <a class="news__link" href="#">
+                  <div class="news__date">
+                    <time datetime="2020-01-01">2030.02.08</time>
+                  </div>
+                  <div class="news__title">
+                    採用を強化中です！一緒に働きませんか？
+                  </div>
+                </a>
+              </li>
+              <li class="news__item">
+                <a class="news__link" href="#">
+                  <div class="news__date">
+                    <time datetime="2020-01-01">2030.02.02</time>
+                  </div>
+                  <div class="news__title">
+                    人材紹介SNS『スタート』をリリースしました。3/31まで新規登録キャンペーンを開催中です！サービス内で使える500ポイントをプレゼント！
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /content -->
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__nav">
+          <ul class="footer__list">
+            <li class="footer__item"><a href="index.html">ホーム</a></li>
+            <li class="footer__item">
+              <a href="message.html">メッセージ</a>
+            </li>
+            <li class="footer__item">
+              <a href="company.html">会社概要</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__copyright">&copy;START</div>
+      </div>
+    </footer>
+    <!-- /footer -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
